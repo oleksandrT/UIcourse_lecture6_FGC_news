@@ -1,0 +1,13 @@
+.page-title {
+	margin-bottom: 50px;
+}
+
+.article {
+	margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px dashed #337ab7;
+}
+
+.confirmation {
+	padding: 15px;
+}

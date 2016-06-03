@@ -1,0 +1,35 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/public/main.css" />
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-title">
+            {{title}}
+        </h1>
+
+
+        <div class="row">
+            <div class="col-sm-8">
+                {{#articles}}
+                    <article class="article">
+                        <h4><a href="/{{id}}">{{title}}</a></h4>
+                        <div>{{excerpt}}</div>
+                    </article>
+                {{/articles}}
+            </div>
+            <div class="col-sm-4 text-right">
+                <a href="/add" class="btn btn-primary">Add new article</a>
+            </div>
+        </div>
+
+        <!-- <button id="xxx2">ajax button</button>
+        <div id="vvv">empty</div> -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="/public/main.js"></script>
+
+</body>
+</html>
