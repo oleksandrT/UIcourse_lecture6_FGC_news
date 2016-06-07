@@ -10,7 +10,7 @@ var articles = [
         id: 2,
         title: 'Alice in Wonderland’s hidden messages',
         excerpt: 'Is Lewis Carroll’s tale really about sex, drugs and colonialism?',
-        body: '<strong>Is Lewis Carroll’s tale really about sex, drugs, and colonialism? Some say yes. Others argue it’s about eating disorders or the Wars of the Roses. Hephzibah Anderson takes a look.</strong> The book began life humbly, as entertainment for 10-year-old Alice Liddell and her sisters as they boated on the Thames with one Charles Dodgson. It proved such a hit that Alice persuaded Dodgson to transcribe it, which he duly did – using the nom de plume Lewis Carroll. Alice was the daughter of the dean of Christ Church, the Oxford college where Dodgson taught mathematics, and she wasn’t the only young girl he befriended. To the 21st Century mind, there is something that makes one deeply uneasy about this scenario. Though there is no evidence of anything untoward in Dodgson’s relationships, it’s hard not to view as suspect a grown man who enjoyed having his young playmates sit on his lap and pose for photographs, often under-dressed.'
+        body: '<p><strong>Is Lewis Carroll’s tale really about sex, drugs, and colonialism? Some say yes. Others argue it’s about eating disorders or the Wars of the Roses. Hephzibah Anderson takes a look.</strong></p><p>The book began life humbly, as entertainment for 10-year-old Alice Liddell and her sisters as they boated on the Thames with one Charles Dodgson. It proved such a hit that Alice persuaded Dodgson to transcribe it, which he duly did – using the nom de plume Lewis Carroll. Alice was the daughter of the dean of Christ Church, the Oxford college where Dodgson taught mathematics, and she wasn’t the only young girl he befriended. To the 21st Century mind, there is something that makes one deeply uneasy about this scenario. Though there is no evidence of anything untoward in Dodgson’s relationships, it’s hard not to view as suspect a grown man who enjoyed having his young playmates sit on his lap and pose for photographs, often under-dressed.</p>'
     },
     {
         id: 3,
@@ -49,12 +49,12 @@ module.exports = function (app) {
         });
     });
 
-    app.get('/:id', function (req, res) {
+    app.get('/article/:id', function (req, res) {
         var id = req.params.id;
         console.log('id: ', id);
         res.render('article.hbs', {
-            title: articles[id].title,
-            body: articles[id].body
+            title: articles[id - 1].title,
+            body: articles[id - 1].body
         });
     });
 
@@ -67,7 +67,7 @@ module.exports = function (app) {
         articles.push({
             id: articlesLength + 1,
             title: req.body.title,
-            excerpt: req.body.content,
+            excerpt: req.body.content.slice(0, 50),
             body: req.body.content
         });
         res.render('addnew.hbs', {
